@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>e-commerace-shopping</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link id="avast_os_ext_custom_font" href="chrome-extension://eofcbnmajmjmplflapaojjnihcjkigck/common/ui/fonts/fonts.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/javascripts/shopping.js"></script>
+</head>
+<body>
+<div style="text-align: right">
+<p> You are currently logged in as <b> <%=user.username%></b> </p>
+<a href="/logout"> Logout </a>
+</div>
+<div class="container">
+    <h4> Here are our list of things are available, choose as many as you want</h4>
+    <fieldset>
+        <form action="/trade" method="post">
+            <table class="table listOfGoods">
+                <tr>
+                    <td>Item :</td>
+                    <td><select name="items" class="form-control">
+                        <option></option>
+                        <option value="tshirt">T-shirt</option>
+                        <option value="pant">Pant</option>
+                        <option value="hat">Hat</option>
+                    </select>
+                    </td>
+                    <td>
+                        <input type="button" class="btn btn-warning"  id="removeEntry" value="Remove Entry"></input>
+                    </td>
+                </tr>
+            </table>
+            <input type="button" class="btn btn-info" id="addEntry" value="Add New Entry">
+            <button class="btn btn-primary">Check Out</button>
+        </form>
+    </fieldset>
+</div>
+<%if(totalPrice !== null){ %>
+ <h3>Payment details as below:</h3>
+<div class="row">
+        <dt class="col-sm-3">Total price</dt>
+         <dd class="col-sm-9">$<%=totalPrice%></dd>
+         <dt class="col-sm-3">Discount Amount</dt>
+         <dd class="col-sm-9">$<%=discount%></dd>
+         <dt class="col-sm-3">Net Pay amount</dt>
+         <dd class="col-sm-9">$<%=pay%></dd>
+</div>
+   <%}%>
+</body>
+</html>

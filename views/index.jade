@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  if (!user)
+    h1 Thanks for visiting our online store, please login
+    br
+    h4 if you're visiting us first time, please register first.
+    h2
+        a(href="/login") Login
+         &nbsp;
+         a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/logout") Logout
